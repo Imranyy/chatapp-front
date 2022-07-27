@@ -1,0 +1,68 @@
+*{
+  padding: 0;
+  margin: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.nav{
+  background-color: rgba(0, 0, 0, 0.816);
+  padding: 40px;
+  
+}
+
+.nav h1{
+  color:  wheat;
+
+
+}
+
+.nav .link{
+  display: inline;  
+  padding: 20px;
+  color: wheat;
+  text-decoration: none;
+  margin-top: 30px;
+}
+
+.nav form{
+  width: 100%;
+
+}
+
+.nav input{
+  width: 20%;
+  padding: 10px;
+  border-radius: 3px;
+  float: right;
+
+}
+
+.posts{
+  margin: 10px;
+  background-color: rgb(222, 215, 215);
+  padding: 20px;
+
+}
+
+.post{
+  padding: 15px;
+  box-shadow: 5px 5px 5px 5px  gray;
+  margin-top: 20px;
+ 
+
+}
+.post-link{
+  text-decoration: none;
+  color: rgba(4, 26, 39, 0.956);
+
+}
+
+.individual-post{
+  background-color: rgb(222, 215, 215);
+  padding: 30px;
+
+}
+
+.individual-post h3{
+  margin-bottom: 5px;
+  
+}
