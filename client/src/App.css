@@ -1,68 +1,50 @@
 *{
-  padding: 0;
   margin: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding: 0;
 }
-.nav{
-  background-color: rgba(0, 0, 0, 0.816);
-  padding: 40px;
+body{
+  background: #f2f2f2;
   
 }
-
-.nav h1{
-  color:  wheat;
-
-
+.chat-window{
+  top: 0;
+  font-family: monospace;
+  border-radius: 5px;
+  overflow-y: auto;
+  height: 72%;
+  background-color: #f2f2f2;
+  margin-top: 100px;
+  justify-content: left;
 }
-
-.nav .link{
-  display: inline;  
-  padding: 20px;
-  color: wheat;
-  text-decoration: none;
-  margin-top: 30px;
+.output p{
+  padding: 14px 0px;
+  margin: 0 20px;
+  border-bottom: 1px solid #e9e9e9;
+  color: #555;
 }
-
-.nav form{
-  width: 100%;
-
+.output strong{
+  color:#575ed8;
 }
-
-.nav input{
-  width: 20%;
-  padding: 10px;
-  border-radius: 3px;
-  float: right;
-
+.container{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 20px;
 }
-
-.posts{
-  margin: 10px;
-  background-color: rgb(222, 215, 215);
-  padding: 20px;
-
+.message-input{
+  border-right: none #f2f2f2;
+  outline: none;
 }
-
-.post{
-  padding: 15px;
-  box-shadow: 5px 5px 5px 5px  gray;
-  margin-top: 20px;
- 
-
+.regform{
+  display: none;
 }
-.post-link{
-  text-decoration: none;
-  color: rgba(4, 26, 39, 0.956);
-
+.regform.open{
+  display: block;
 }
-
-.individual-post{
-  background-color: rgb(222, 215, 215);
-  padding: 30px;
-
+.loginform{
+  display: block;
 }
-
-.individual-post h3{
-  margin-bottom: 5px;
-  
+.loginform.close{
+  display: none;
 }
