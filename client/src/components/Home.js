@@ -1,42 +1,62 @@
 import NavBar from "./NavBar";
-import io from 'socket.io-client'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const socket=io.connect('https://serve-chat-app.herokuapp.com')
+
  const Home=()=>{
-    //const[output,setOutput]=useState('');
+    const[output,setOutput]=useState('');
     const [message,setMessage]=useState('');
     const handleSubmit=async(e)=>{
         e.preventDefault()
         const form=document.querySelector('.d-flex')
         try {
-            await socket.emit('chat',{
-                pic:localStorage.getItem('pic'),
-                name:localStorage.getItem('name'),
-                message:message
+            const url='https://serve-chat-app.herokuapp.com/api/chat';
+            await fetch(url,{
+                method:"POST",
+                body:JSON.stringify({
+                    pic:localStorage.getItem('pic'),
+                    name:localStorage.getItem('name'),
+                    message:message
+                }),
+                headers:{
+                    'Content-Type':'application/json'
+                }
             })
+            
             form.reset()
         } catch (error) {
             console.log(error.message)
         }
     }
-    socket.on('chat',data=>{
-        //setOutput(data)
-    const output=document.querySelector('.output');
-        output.innerHTML+=`
-        <p><img src=${localStorage.getItem('pic')} className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>
-        :${message}</p><br/>
-        <p><img src=${data.pic} className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>
-        :${data.message}</p><br/>
-        `
-        })
+
+    const getChats=async()=>{
+        try {
+            const url='https://serve-chat-app.herokuapp.com/api/chat';
+            const response=await fetch(url,{
+                method:'GET'
+            })
+            const parseRes=await response.json()
+            setOutput(parseRes)
+        } catch (error) {
+            
+        }
+    }
+   useEffect(()=>{
+    getChats();
+   },[])
+    
+        
 
     return(
         <>
         <NavBar/>
         <div className="container chat-window">
             <div className="output">
-
+                {output?output.map(data=>(
+                     <div key={data._id}>
+                        <p><img src={data.pic} className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>
+                     {data.message}</p><br/>
+                     </div>
+                )):'No Chats'}
             </div>
         </div>
         
