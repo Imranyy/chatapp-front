@@ -24,8 +24,10 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
         //setOutput(data)
     const output=document.querySelector('.output');
         output.innerHTML+=`
+        <p><img src=${localStorage.getItem('pic')} className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>
+        :${message}</p><br/>
         <p><img src=${data.pic} className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>
-        <strong>${data.name}</strong>:${data.message}</p><br/>
+        :${data.message}</p><br/>
         `
         })
 
