@@ -1,6 +1,6 @@
 import NavBar from "./NavBar";
 import io from 'socket.io-client'
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const socket=io.connect('https://serve-chat-app.herokuapp.com')
  const Home=()=>{
@@ -24,12 +24,25 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
         //setOutput(data)
     const output=document.querySelector('.output');
         output.innerHTML+=`
-        <p><img src=${localStorage.getItem('pic')} className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>
-        :${message}</p><br/>
-        <p><img src=${data.pic} className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>
-        :${data.message}</p><br/>
+        <p><img src=${data.pic} className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>  ${data.message}</p><br/>
         `
         })
+        //getting chats
+        const getChats=async()=>{
+            try {
+                socket.on('output',res=>{
+                 const output=document.querySelector('.output');
+                 output.innerHTML+=`
+                 <p><img src=${res.pic} className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>  ${res.message}</p><br/>
+                 `
+             })
+            } catch (error) {
+              console.log(error.message)  
+            }
+        };
+        useEffect(()=>{
+            getChats();
+        },[])
 
     return(
         <>
