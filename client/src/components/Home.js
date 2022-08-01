@@ -37,6 +37,7 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
             
        },[socket])
         })
+        
     return(
         <>
         <NavBar/>
