@@ -1,6 +1,6 @@
 import NavBar from "./NavBar";
 import io from 'socket.io-client';
-import uuid from 'react-uuid'; 
+import img from '../img.png'
 import { useState,useEffect } from "react";
 
 const socket=io.connect('https://serve-chat-app.herokuapp.com')
@@ -13,7 +13,6 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
         const form=document.querySelector('.d-flex')
         try {
                 socket.emit('chat',{
-                id:uuid(),
                 pic:localStorage.getItem('pic'),
                 name:localStorage.getItem('name'),
                 message:message
@@ -37,7 +36,6 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
             
        },[socket])
         })
-        
     return(
         <>
         <NavBar/>
@@ -50,7 +48,7 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
    
                 
                 <div className="output1">
-                    <p><img src={output1.pic} className="avatar"  alt='avatar' width='40' height='40' style={{borderRadius:'20px'}}/>  {output1.message?output1.message:'Text something😉😉'}</p><br/>
+                    <p><img src={output1.pic?output1.pic:img} className="avatar"  alt='avatar' width='40' height='40' style={{borderRadius:'20px'}}/>  {output1.message?output1.message:'Text something😉😉'}</p><br/>
                  </div>
                  
 

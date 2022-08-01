@@ -47,6 +47,19 @@ body{
   right: 0;
   margin-bottom: 20px;
 }
+label input{
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+.error{
+  color: #b13737;
+}
+.img{
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 80px;
+}
 .message-input{
   border-right: none #f2f2f2;
   outline: none;

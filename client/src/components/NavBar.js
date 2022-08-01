@@ -1,8 +1,8 @@
 import { useState,useEffect } from "react";
 import toast from "react-hot-toast";
 import img from "../img.png";
-import { Link } from "react-router-dom";
-
+import { Link} from "react-router-dom";
+import { projectStorage,ref,getDownloadURL,uploadBytesResumable} from '../FirebaseConfig/FirebaseConfig';
 const NavBar=()=>{
   const [users,setUsers]=useState('')
   const[isUi,setIsUi]=useState(false)
@@ -76,6 +76,7 @@ const NavBar=()=>{
       registerForm.reset()
       const parseRes=await register.json();
       if(parseRes.token){
+        localStorage.setItem('id',parseRes._id);
         localStorage.setItem('pic',parseRes.pic);
         localStorage.setItem('token',parseRes.token);
         localStorage.setItem('name',parseRes.name);
@@ -115,6 +116,7 @@ const NavBar=()=>{
       loginForm.reset()
       const parseRes=await login.json()
       if(parseRes.token){
+        localStorage.setItem('id',parseRes._id);
         localStorage.setItem('pic',parseRes.pic);
         localStorage.setItem('token',parseRes.token);
         localStorage.setItem('name',parseRes.name);
@@ -150,6 +152,7 @@ const NavBar=()=>{
   const logOut=async()=>{
     try {
       preloader()
+      localStorage.removeItem('id')
       localStorage.removeItem('token')
       localStorage.removeItem('name')
       localStorage.removeItem('number')
@@ -163,6 +166,52 @@ const NavBar=()=>{
       console.log(err.message)
   }
   }
+  //upload profile
+  const [error,setError]=useState(null);
+  const [file,setFile]=useState(null);
+      const types=['image/png', 'image/jpeg'];
+
+        const changeHandler=(e)=>{
+          let selected=e.target.files[0]
+          if(selected&&types.includes(selected.type)){
+              setFile(selected)
+              setError('')
+              //uploading image to storage
+              const storageRef=ref(projectStorage,selected.name);
+              const uploadTask = uploadBytesResumable(storageRef, selected);
+              uploadTask.on('state_changed',
+               async()=>{
+                  try {
+                    preloader()
+                       await getDownloadURL(storageRef).then((url)=>{
+                        console.log(url);
+                        localStorage.setItem('pic',url);
+                       })
+                       const url=`https://serve-chat-app.herokuapp.com/api/${localStorage.getItem('id')}`
+                         const update=localStorage.getItem('pic')
+                         fetch(url,{
+                             method:'PATCH',
+                             body:JSON.stringify({
+                               pic:update
+                             }),
+                               headers:{
+                                 'Content-Type':'application/json'
+                               }
+                         })
+                         preloaderoff();
+                         toast.success('profile updated successfully😊😊');
+                  } catch (error) {
+                    preloaderoff()
+                    toast.error('failed to update profile☠☠')
+                      console.log(error)
+                  }
+                       })
+                       
+          }else{
+              setFile(null);
+              setError('Please select an image file(png or jpeg)')
+          }
+        }
    //preloader
    const preloader=()=>{
     const loader=document.querySelector('.preload');
@@ -225,6 +274,22 @@ const NavBar=()=>{
                 </div>
               )):'No Active Users'}
             </div><br/>
+           
+           <div className="logged-in" style={{display:'none',width:'40%',marginLeft:'30%'}}>
+            <label >
+                <input type="file" onChange={changeHandler}/>
+                <span>  
+                    <img src={img} className="avatar circle img" alt='avatar' height="120" width='120'/>
+                <br/>
+                Set your profile pic:
+                </span>
+            </label>
+            <div className="img-response">
+                {error&&<div className='error'>{error}</div>}
+                {file&&<div>{file.name}</div>}
+            </div>
+            </div><br/><br/>
+
               <button onClick={logOut} className="btn btn-success logged-in" style={{display:'none',width:'40%',marginLeft:'30%'}} >Log Out☠</button>
           </div>
         </div>
