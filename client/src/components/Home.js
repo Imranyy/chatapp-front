@@ -42,13 +42,13 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
         <div className="container chat-window">
         {output?output.map(res=>(
             <div key={res._id} className="output">
-                <p><img src={res.pic} className="avatar"  alt='avatar' width='40' height='40' style={{borderRadius:'20px'}}/>  {res.message}</p><br/>
+                <img src={res.pic} className="avatar"  alt='avatar' width='40' height='40' style={{borderRadius:'20px'}}/><p style={{marginLeft:'50px',marginTop:'-45px'}}>  {res.message}</p><br/>
             </div>
                 )):'No chats'}
    
                 
                 <div className="output1">
-                    <p><img src={output1.pic?output1.pic:img} className="avatar"  alt='avatar' width='40' height='40' style={{borderRadius:'20px'}}/>  {output1.message?output1.message:'Text something😉😉'}</p><br/>
+                    <img src={output1.pic?output1.pic:img} className="avatar"  alt='avatar' width='40' height='40' style={{borderRadius:'20px'}}/><p style={{marginLeft:'50px',marginTop:'-45px'}}>  {output1.message?output1.message:'Text something😉😉'}</p><br/>
                  </div>
                  
 
@@ -60,7 +60,7 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
         <input className="form-control message-input" type="text" placeholder="Message" onChange={(e)=>{setMessage(e.target.value)}} autoFocus required/>
         <button className="btn btn-success"><i className="material-icons">send</i></button>
         </form>
-        </div>
+        </div> 
         </>
     )
  }

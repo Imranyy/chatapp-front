@@ -23,7 +23,9 @@ body{
   height: 70%;
   background-color: #f2f2f2;
   margin-top: 70px;
-  justify-content: left;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  justify-content: left 
 }
 .output p{
   padding: 14px 0px;
