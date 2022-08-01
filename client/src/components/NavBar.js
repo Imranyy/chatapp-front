@@ -233,7 +233,7 @@ const NavBar=()=>{
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="offcanvas offcanvas-end text-bg-dark" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel"><div className="preload"></div>
+          <div className="offcanvas offcanvas-end text-bg-dark" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" style={{overflowY:'auto'}}><div className="preload"></div>
             <div className="offcanvas-header">
               <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel" style={{color:"GrayText"}}>Dashboard</h5>
               <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>

@@ -20,9 +20,9 @@ body{
   font-family: monospace;
   border-radius: 5px;
   overflow-y: auto;
-  height: 72%;
+  height: 70%;
   background-color: #f2f2f2;
-  margin-top: 100px;
+  margin-top: 70px;
   justify-content: left;
 }
 .output p{
