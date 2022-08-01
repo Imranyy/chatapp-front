@@ -47,11 +47,11 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
             </div>
                 )):'No chats'}
    
-                {output1?output1.map((data)=>(
-                    <div className="output1">
-                        <p><img src={data.pic} className="avatar"  alt='avatar' width='40' height='40' style={{borderRadius:'20px'}}/>  {data.message}</p><br/>
+                
+                <div className="output1">
+                    <p><img src={output1.pic} className="avatar"  alt='avatar' width='40' height='40' style={{borderRadius:'20px'}}/>  {output1.message?output1.message:'Text something😉😉'}</p><br/>
                  </div>
-                )):' Text Something😉😉'}
+                 
 
                 
         </div>

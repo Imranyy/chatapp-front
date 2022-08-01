@@ -34,6 +34,12 @@ body{
 .output strong{
   color:#575ed8;
 }
+.output1 p{
+  padding: 14px 0px;
+  margin: 0 20px;
+  border-bottom: 1px solid #e9e9e9;
+  color: #555;
+}
 .container{
   position: fixed;
   bottom: 0;
