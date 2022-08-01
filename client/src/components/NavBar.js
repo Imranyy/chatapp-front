@@ -228,14 +228,14 @@ const NavBar=()=>{
         <nav className="navbar navbar-dark bg-dark fixed-top"> 
         <div className="container-fluid">
           <Link to='/' className="navbar-brand logged-out" style={{display:'none'}}>My Chat Room</Link>
-          <Link to='/' className="navbar-brand logged-in" style={{display:'none',fontFamily:'monospace'}}><img src={pic?pic:img} className="avatar" alt="avatar" width='40' height='40' style={{borderRadius:'20px'}}/> {localStorage.getItem('name')}</Link>
+          <Link to='/' className="navbar-brand logged-in" style={{display:'none',fontFamily:'monospace'}}><img src={pic?pic:img} className="avatar" alt="avatar" width='40' height='40' style={{borderRadius:'20px', color:'GrayText'}}/> {localStorage.getItem('name')}</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
             <span className="navbar-toggler-icon"></span>
           </button>
 
           <div className="offcanvas offcanvas-end text-bg-dark" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel"><div className="preload"></div>
             <div className="offcanvas-header">
-              <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">Dashboard</h5>
+              <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel" style={{color:"GrayText"}}>Dashboard</h5>
               <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div className="offcanvas-body logged-out" style={{fontFamily:'monospace',display:'none'}}>
@@ -267,29 +267,37 @@ const NavBar=()=>{
                 </li>
               </ul>
             </div>
-            <div className="logged-in" style={{display:'none',marginLeft:'50px'}}>
-              <h5 style={{fontFamily:'cursive'}}>Active Users</h5>
-            {users?users.map(user=>(
-                <div key={user._id} style={{fontFamily:'monospace'}}>
-                  <img src={user.pic} alt='avatar' className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>  {user.name}
-                </div>
-              )):'No Active Users'}
-            </div><br/>
-           
            <div className="logged-in" style={{display:'none',width:'40%',marginLeft:'30%'}}>
             <label >
                 <input type="file" onChange={changeHandler}/>
                 <span>  
-                    <img src={img} className="avatar circle img" alt='avatar' height="120" width='120'/>
+                    <img src={pic?pic:img} className="avatar circle img" alt='avatar' height="120" width='120'/>
                 <br/>
-                Set your profile pic:
+                Update Profile pic:
                 </span>
             </label>
             <div className="img-response">
                 {error&&<div className='error'>{error}</div>}
                 {file&&<div>{file.name}</div>}
             </div>
+            <div style={{fontFamily:'monospace'}}>
+              <p style={{color:'GrayText'}}>Name</p>
+              <p style={{marginTop:'-18px'}}>{localStorage.getItem('name')}</p>
+              <p style={{color:'GrayText'}}>Phone</p>
+              <p style={{marginTop:'-18px'}}>{localStorage.getItem('number')}</p>
+            </div>
+            
             </div><br/><br/>
+
+            <div className="logged-in" style={{display:'none',marginLeft:'50px'}}>
+              <h5 style={{fontFamily:'monospace', color:'GrayText'}}>Active Users</h5>
+            {users?users.map(user=>(
+                <><div key={user._id} style={{fontFamily:'monospace'}}>
+                  <img src={user.pic} alt='avatar' className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>  {user.name}
+                  </div><br/></>
+              )):'No Active Users'}
+            </div><br/>
+           
 
               <button onClick={logOut} className="btn btn-success logged-in" style={{display:'none',width:'40%',marginLeft:'30%'}} >Log Out☠</button>
           </div>
