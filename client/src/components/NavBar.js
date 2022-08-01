@@ -221,13 +221,14 @@ const NavBar=()=>{
     const loader=document.querySelector('.preload');
     loader.style.display='none'; 
   }
+  const pic=localStorage.getItem('pic');
     return(
         <>
         
         <nav className="navbar navbar-dark bg-dark fixed-top"> 
         <div className="container-fluid">
           <Link to='/' className="navbar-brand logged-out" style={{display:'none'}}>My Chat Room</Link>
-          <Link to='/' className="navbar-brand logged-in" style={{display:'none',fontFamily:'monospace'}}><img src={img} className="avatar" alt="avatar" width='40' height='40' style={{borderRadius:'20px'}}/> {localStorage.getItem('name')}</Link>
+          <Link to='/' className="navbar-brand logged-in" style={{display:'none',fontFamily:'monospace'}}><img src={pic?pic:img} className="avatar" alt="avatar" width='40' height='40' style={{borderRadius:'20px'}}/> {localStorage.getItem('name')}</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
             <span className="navbar-toggler-icon"></span>
           </button>
