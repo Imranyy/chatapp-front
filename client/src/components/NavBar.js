@@ -271,7 +271,7 @@ const NavBar=()=>{
             <label >
                 <input type="file" onChange={changeHandler}/>
                 <span>  
-                    <img src={pic?pic:img} className="avatar circle img" alt='avatar' height="120" width='120'/>
+                    <img src={pic?pic:img} className="avatar circle img" alt='' height="120" width='120'/>
                 <br/>
                 Update Profile pic:
                 </span>
@@ -293,13 +293,14 @@ const NavBar=()=>{
               <h5 style={{fontFamily:'monospace', color:'GrayText'}}>Active Users</h5>
             {users?users.map(user=>(
                 <><div key={user._id} style={{fontFamily:'monospace'}}>
-                  <img src={user.pic} alt='avatar' className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>  {user.name}
+                  <img src={user.pic} alt='' className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>  {user.name}
                   </div><br/></>
               )):'No Active Users'}
             </div><br/>
            
 
               <button onClick={logOut} className="btn btn-success logged-in" style={{display:'none',width:'40%',marginLeft:'30%'}} >Log Out☠</button>
+              <br/><br/>
           </div>
         </div>
       </nav>

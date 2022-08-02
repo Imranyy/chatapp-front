@@ -42,13 +42,13 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
         <div className="container chat-window">
         {output?output.map(res=>(
             <div key={res._id} className="output">
-                <img src={res.pic} className="avatar"  alt='avatar' width='40' height='40' style={{borderRadius:'20px'}}/><p style={{marginLeft:'50px',marginTop:'-45px'}}>  {res.message}</p><br/>
+                <img src={res.pic} className="avatar"  alt='' width='40' height='40' style={{borderRadius:'20px'}}/><p style={{marginLeft:'50px',marginTop:'-45px'}}>  {res.message}</p><br/>
             </div>
                 )):'No chats'}
    
                 
                 <div className="output1">
-                    <img src={output1.pic?output1.pic:img} className="avatar"  alt='avatar' width='40' height='40' style={{borderRadius:'20px'}}/><p style={{marginLeft:'50px',marginTop:'-45px'}}>  {output1.message?output1.message:'Text something😉😉'}</p><br/>
+                    <img src={output1.pic?output1.pic:img} className="avatar"  alt='' width='40' height='40' style={{borderRadius:'20px'}}/><p style={{marginLeft:'50px',marginTop:'-45px'}}>  {output1.message?output1.message:'Text something😉😉'}</p><br/>
                  </div>
                  
 
