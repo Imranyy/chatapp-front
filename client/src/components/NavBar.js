@@ -19,7 +19,7 @@ const NavBar=()=>{
       })
       const parseRes= await response.json();
       parseRes===true ? setIsUi(true): setIsUi(false)
-    } catch (err) {
+    } catch (err) { 
       toast.error('Register or Login to you account!');
       setIsUi(false);
       console.log(err.message);
