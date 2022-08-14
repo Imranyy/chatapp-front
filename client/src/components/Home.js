@@ -42,7 +42,7 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
                 console.log('push registered...');
                 //send push notification
                 console.log('sending push...')
-                await fetch('http://localhost:5000/subscribe',{
+                await fetch('https://serve-chat-app.herokuapp.com/subscribe',{
                     method:'POST',
                     body:JSON.stringify({
                         subscription,
