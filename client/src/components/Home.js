@@ -112,7 +112,7 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
                 </div>
                 <br/>
             </div>
-                )):'No chats'}
+                )):(<p></p>)}
    
                 
                 <div className="output1">
