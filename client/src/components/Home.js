@@ -107,8 +107,8 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
         {output?output.map(res=>(
             <div key={res._id} className="output">
                 <img src={res.pic?res.pic:img} className="avatar"  alt='.' width='40' height='40' style={{borderRadius:'20px'}}/><div style={{marginLeft:'52px',marginTop:'-45px'}}>  {res.message} 
-                <br/><h6 style={{marginTop:'10px',fontSize:'12px',fontFamily:'monospace', color:'GrayText'}}>From: {res.name}</h6>
-                <p style={{float:'right',marginTop:'-1px',fontSize:'12px',fontFamily:'monospace', color:'GrayText'}}>{res.time}</p>
+                <br/><h6 style={{marginTop:'10px',fontSize:'60%',fontFamily:'monospace', color:'GrayText'}}>From: {res.name}</h6>
+                <p style={{float:'right',marginTop:'-5px',fontSize:'60%',fontFamily:'monospace', color:'GrayText'}}>{res.time}</p>
                 </div>
                 <br/>
             </div>
@@ -117,8 +117,8 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
                 
                 <div className="output1">
                     <img src={output1.pic?output1.pic:img} className="avatar"  alt='.' width='40' height='40' style={{borderRadius:'20px'}}/><div style={{marginLeft:'50px',marginTop:'-45px'}}>  {output1.message?output1.message:'Text something😉😉'}
-                    <br/><h6 style={{marginTop:'10px',fontSize:'12px',fontFamily:'monospace', color:'GrayText'}}>From: {output1.name?output1.name:'Crappygam😂'}</h6>
-                    <p style={{float:'right',marginTop:'-1px',fontSize:'12px',fontFamily:'monospace', color:'GrayText'}}>{output1.time}</p>
+                    <br/><h6 style={{marginTop:'10px',fontSize:'60%',fontFamily:'monospace', color:'GrayText'}}>From: {output1.name?output1.name:'Crappygam😂'}</h6>
+                    <p style={{float:'right',marginTop:'-5px',fontSize:'60%',fontFamily:'monospace', color:'GrayText'}}>{output1.time}</p>
                     </div>
                     <br/>
                  </div>
