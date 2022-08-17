@@ -9,15 +9,16 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
 const NavBar=()=>{
   const [on,setOn]=useState('')
   const [online,setOneline]=useState('');
-  const [users,setUsers]=useState('')
+  const [users,setUsers]=useState('');
   const[isUi,setIsUi]=useState(false)
 
-  //onlune users
+  //onl1ne users
   socket.emit('new-user',{
     name:localStorage.getItem('name')
   })
  useEffect(()=>{
   socket.on('online',res=>{
+    console.log(res.name)
     setOn(res.name)
       setOneline('online')
   })
