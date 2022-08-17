@@ -1,11 +1,27 @@
 import { useState,useEffect } from "react";
 import toast from "react-hot-toast";
+import io from 'socket.io-client';
 import img from "../img2.png";
 import { Link} from "react-router-dom";
 import { projectStorage,ref,getDownloadURL,uploadBytesResumable} from '../FirebaseConfig/FirebaseConfig';
+
+const socket=io.connect('http://localhost:5000')
 const NavBar=()=>{
+  const [on,setOn]=useState('')
+  const [online,setOneline]=useState('');
   const [users,setUsers]=useState('')
   const[isUi,setIsUi]=useState(false)
+
+  //onlune users
+  socket.emit('new-user',{
+    name:localStorage.getItem('name')
+  })
+ useEffect(()=>{
+  socket.on('online',res=>{
+    setOn(res.name)
+      setOneline('online')
+  })
+ },[])
   //setupUI for logged in and logged out admins
  
   const checkUI=async()=>{
@@ -294,7 +310,7 @@ const NavBar=()=>{
             {users?users.map(user=>(
                 <><div key={user._id} style={{fontFamily:'monospace'}}>
                   <img src={user.pic?user.pic:img} alt='.' className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>  {user.name}
-                  </div><br/></>
+                  <div style={{float:'right',marginTop:'12px',marginRight:'10px',fontSize:'70%',color:'greenyellow'}}>{user.name===on?online:(<p style={{color:'rebeccapurple'}}>Disconnected</p>)}</div></div><br/></>
               )):'No Active Users'}
             </div><br/>
            
