@@ -5,7 +5,7 @@ import img from "../img2.png";
 import { Link} from "react-router-dom";
 import { projectStorage,ref,getDownloadURL,uploadBytesResumable} from '../FirebaseConfig/FirebaseConfig';
 
-const socket=io.connect('http://localhost:5000')
+const socket=io.connect('https://serve-chat-app.herokuapp.com')
 const NavBar=()=>{
   const [on,setOn]=useState('')
   const [online,setOneline]=useState('');
