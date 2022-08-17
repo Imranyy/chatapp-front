@@ -311,7 +311,7 @@ const NavBar=()=>{
             {users?users.map(user=>(
                 <><div key={user._id} style={{fontFamily:'monospace'}}>
                   <img src={user.pic?user.pic:img} alt='.' className="avatar"  width='40' height='40' style={{borderRadius:'20px'}}/>  {user.name}
-                  <div style={{float:'right',marginTop:'12px',marginRight:'10px',fontSize:'70%',color:'greenyellow'}}>{user.name===on?online:(<p style={{color:'rebeccapurple'}}>Disconnected</p>)}</div></div><br/></>
+                  <div style={{float:'right',marginTop:'12px',marginRight:'10px',fontSize:'70%',color:'greenyellow'}}>{user.name===on||localStorage.getItem('name')===user.name?online:(<p style={{color:'rebeccapurple'}}>Disconnected</p>)}</div></div><br/></>
               )):'No Active Users'}
             </div><br/>
            
