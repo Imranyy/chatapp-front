@@ -204,6 +204,7 @@ const NavBar=()=>{
                         console.log(url);
                         localStorage.setItem('pic',url);
                        })
+                       //patch user image to db
                        const url=`https://serve-chat-app.herokuapp.com/api/${localStorage.getItem('id')}`
                          const update=localStorage.getItem('pic')
                          fetch(url,{
@@ -215,6 +216,19 @@ const NavBar=()=>{
                                  'Content-Type':'application/json'
                                }
                          })
+                         //patch user chat image
+                         const patchUrl='https://serve-chat-app.herokuapp.com/api/image'
+                           fetch(patchUrl,{
+                            method:"PATCH",
+                            body:JSON.stringify({
+                              name:localStorage.getItem('name'),
+                              pic:localStorage.getItem('pic')
+                            }),
+                            headers:{
+                              'Content-Type':'application/json'
+                            }
+                          })
+
                          preloaderoff();
                          toast.success('profile updated successfully😊😊');
                   } catch (error) {
