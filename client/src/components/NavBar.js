@@ -207,7 +207,7 @@ const NavBar=()=>{
                        //patch user image to db
                        const url=`https://serve-chat-app.herokuapp.com/api/${localStorage.getItem('id')}`
                          const update=localStorage.getItem('pic')
-                         fetch(url,{
+                         await fetch(url,{
                              method:'PATCH',
                              body:JSON.stringify({
                                pic:update
@@ -218,7 +218,7 @@ const NavBar=()=>{
                          })
                          //patch user chat image
                          const patchUrl='https://serve-chat-app.herokuapp.com/api/image'
-                           fetch(patchUrl,{
+                           await fetch(patchUrl,{
                             method:"PATCH",
                             body:JSON.stringify({
                               name:localStorage.getItem('name'),
