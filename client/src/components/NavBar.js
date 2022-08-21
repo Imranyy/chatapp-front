@@ -320,7 +320,7 @@ const NavBar=()=>{
             
             </div><br/><br/>
 
-            <div className="logged-in" style={{display:'none',marginLeft:'50px'}}>
+            <div className="logged-in" style={{display:'none',marginLeft:'50px',overflowY:'auto'}}>
               <h5 style={{fontFamily:'monospace', color:'GrayText'}}>Active Users</h5>
             {users?users.map(user=>(
                 <><div key={user._id} style={{fontFamily:'monospace'}}>
