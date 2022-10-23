@@ -6,6 +6,10 @@ import {Toaster} from 'react-hot-toast';
 
 function App() {
   
+    const toBottom=()=>{
+      window.scrollTo(0,document.body.scrollHeight);
+    }
+ window.onload=toBottom;
   
   return (
  <>

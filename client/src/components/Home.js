@@ -68,8 +68,8 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
                 })
             //getting chats
         socket.on('output',res=>{
-            setOutput(res)
-            
+            setOutput(res);
+        
        },[socket])
         })
 
@@ -84,10 +84,17 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
          }
 
          let current_time=`${hour}:${min}`;
+
+         //load the screen bottomwards
+         const toBottom=()=>{
+            window.document.querySelector('.chat-window').scrollTo(0,99999);
+          }
+       //window.onload=toBottom;
     return(
         <>
         <NavBar/>
         <div className="container chat-window">
+        <button className="btn btn-info" style={{float:'right' , color:'whitesmoke'}} onClick={toBottom}>Bottom<i class="bi bi-arrow-down"></i></button>
         {output?output.map(res=>(
             <div key={res._id} className="output">
                 <img src={res.pic?res.pic:img} className="avatar"  alt='.' width='40' height='40' style={{borderRadius:'20px'}}/><div style={{marginLeft:'52px',marginTop:'-45px'}}>  {res.message} 
@@ -110,7 +117,6 @@ const socket=io.connect('https://serve-chat-app.herokuapp.com')
 
                 
         </div>
-        
         <div className="container logged-in" style={{display:'none'}}> 
         <form className="d-flex" onSubmit={handleSubmit}>
         <input className="form-control message-input" type="text" placeholder="Message" onChange={(e)=>{setMessage(e.target.value)}} autoFocus required/>
